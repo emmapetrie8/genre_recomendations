@@ -21,11 +21,21 @@ public class Test2 {
 	
 	public void getGenreInput() {
 		Scanner genreInput = new Scanner(System.in);  // Create a Scanner object
-	    System.out.println("Please entre the genre you want recomendations for");
+	   	 System.out.println("Please entre the genre you want recomendations for");
 
-	    String genre = genreInput.nextLine();  // Read user input
-	    System.out.println("the genre for recomendations is: " + genre);  // Output user input
-	    this.genre = genre;	    
+	    	String genre = genreInput.nextLine();  // Read user input
+		//input validation
+	    	for (genres g: genres.values()) {
+	    		if (g.name().equals(genre)) {
+	    			valid = true;
+		    		System.out.println("valid genre! Getting a recomendation...");
+	    		}
+	   	 }
+	    	if (valid == false) {
+	    		System.out.println("invalid genre, please try again");
+	    		getGenreInput();
+	    	}    
+	    this.genre = genre;  
 	}
 	
 	public void readFile() throws IOException {
