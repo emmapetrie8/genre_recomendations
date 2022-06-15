@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 public class Recomendation implements ActionListener{
 
 	ArrayList<String> shows = new ArrayList<>();
+	Random rand = new Random();
 
 	JFrame frame;
 	JTextField textField;
@@ -99,7 +100,7 @@ public class Recomendation implements ActionListener{
 	
 	public String selectShow() {
 		int size = shows.size();
-		Random rand = new Random();
+		//Random rand = new Random();
 		int int_random = rand.nextInt(size);
 				
 		String recomendatedShow = shows.get(int_random); 
