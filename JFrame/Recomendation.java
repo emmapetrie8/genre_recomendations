@@ -21,7 +21,7 @@ public class Recomendation implements ActionListener{
 	Random rand = new Random();
 
 	JFrame frame;
-	JTextField textField;
+	JTextField recomendedShowField, recomendedDescriptionField;
 	JButton[] genreButton = new JButton[5];
 	JButton actionButton, comedyButton, horrorButton, realityButton, romanceButton;
 	JPanel panel;
@@ -38,11 +38,16 @@ public class Recomendation implements ActionListener{
 		label1.setSize(50,50);
 		label1.setBounds(5,0,300,50);
 
-		textField = new JTextField();
-		textField.setBounds(50, 40, 300, 50);
-		textField.setFont(myFont);
-		textField.setEditable(false);
-
+		recomendedShowField = new JTextField();
+		recomendedShowField.setBounds(50, 40, 300, 50);
+		recomendedShowField.setFont(myFont);
+		recomendedShowField.setEditable(false);
+		
+		recomendedDescriptionField = new JTextField();
+		recomendedDescriptionField.setBounds(50,350,300,50);
+		recomendedDescriptionField.setFont(myFont);
+		recomendedDescriptionField.setEditable(false);
+		
 		actionButton = new JButton("Action");
 		genreButton[0] = actionButton;
 		comedyButton = new JButton("Comedy");
@@ -71,7 +76,8 @@ public class Recomendation implements ActionListener{
 		panel.add(genreButton[4]);
 		
 		frame.add(label1);
-		frame.add(textField);
+		frame.add(recomendedShowField);
+		frame.add(recomendedDescriptionField);
 		frame.add(panel);
 		frame.setVisible(true);	
 		
@@ -98,10 +104,9 @@ public class Recomendation implements ActionListener{
 	
 	public String selectShow() {
 		int size = shows.size();
-		//Random rand = new Random();
 		int int_random = rand.nextInt(size);
-				
-		String recomendatedShow = shows.get(int_random); 
+		String recomendatedShow = shows.get(int_random);
+		
 		return recomendatedShow;
 	}
 	
@@ -125,41 +130,49 @@ public class Recomendation implements ActionListener{
 		return null;
 	}
 	
+	public String getDescription(String show) {
+		for (String s: shows) {
+			
+		}
+		return null;
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e){
 		String recomendation;
 		if (e.getSource() == actionButton) {
 			try {
 				recomendation = getRecomendation("action");
-				textField.setText(recomendation);
+				recomendedShowField.setText(recomendation);
+				recomendedDescriptionField.setText(recomendation);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
 		} else if (e.getSource() == comedyButton) {
 			try {
 				recomendation = getRecomendation("comedy");
-				textField.setText(recomendation);
+				recomendedShowField.setText(recomendation);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
 		}else if (e.getSource() == horrorButton) {
 			try {
 				recomendation = getRecomendation("horror");
-				textField.setText(recomendation);
+				recomendedShowField.setText(recomendation);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
 		} else if (e.getSource() == realityButton) {
 			try {
 				recomendation = getRecomendation("reality");
-				textField.setText(recomendation);
+				recomendedShowField.setText(recomendation);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
 		} else if (e.getSource() == romanceButton) {
 			try {
 				recomendation = getRecomendation("romance");
-				textField.setText(recomendation);
+				recomendedShowField.setText(recomendation);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
