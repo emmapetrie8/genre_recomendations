@@ -59,8 +59,7 @@ public class Recomendation implements ActionListener{
 			genreButton[i].setFocusable(false);
 			genreButton[i].setBackground(Color.BLUE);
 			genreButton[i].setOpaque(true);
-		}
-		
+		}		
 		
 		panel = new JPanel();
 		panel.setBounds(50, 100, 300, 200);
@@ -75,7 +74,6 @@ public class Recomendation implements ActionListener{
 		frame.add(textField);
 		frame.add(panel);
 		frame.setVisible(true);	
-		
 		
 	}
 	
@@ -129,14 +127,12 @@ public class Recomendation implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e){
-		// TODO Auto-generated method stub
 		String recomendation;
 		if (e.getSource() == actionButton) {
 			try {
 				recomendation = getRecomendation("action");
 				textField.setText(recomendation);
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		} else if (e.getSource() == comedyButton) {
@@ -144,7 +140,6 @@ public class Recomendation implements ActionListener{
 				recomendation = getRecomendation("comedy");
 				textField.setText(recomendation);
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}else if (e.getSource() == horrorButton) {
@@ -152,7 +147,6 @@ public class Recomendation implements ActionListener{
 				recomendation = getRecomendation("horror");
 				textField.setText(recomendation);
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		} else if (e.getSource() == realityButton) {
@@ -160,7 +154,6 @@ public class Recomendation implements ActionListener{
 				recomendation = getRecomendation("reality");
 				textField.setText(recomendation);
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		} else if (e.getSource() == romanceButton) {
@@ -168,7 +161,6 @@ public class Recomendation implements ActionListener{
 				recomendation = getRecomendation("romance");
 				textField.setText(recomendation);
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}	
