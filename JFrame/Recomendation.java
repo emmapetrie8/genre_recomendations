@@ -21,7 +21,7 @@ public class Recomendation implements ActionListener{
 	Random rand = new Random();
 
 	JFrame frame;
-	JTextField recomendedShowField, recomendedDescriptionField;
+	JTextField recomendedShowField;
 	JButton[] genreButton = new JButton[5];
 	JButton actionButton, comedyButton, horrorButton, realityButton, romanceButton;
 	JPanel panel;
@@ -43,11 +43,6 @@ public class Recomendation implements ActionListener{
 		recomendedShowField.setFont(myFont);
 		recomendedShowField.setEditable(false);
 		
-		recomendedDescriptionField = new JTextField();
-		recomendedDescriptionField.setBounds(50,350,300,50);
-		recomendedDescriptionField.setFont(myFont);
-		recomendedDescriptionField.setEditable(false);
-		
 		actionButton = new JButton("Action");
 		genreButton[0] = actionButton;
 		comedyButton = new JButton("Comedy");
@@ -61,8 +56,10 @@ public class Recomendation implements ActionListener{
 		for (int i = 0; i<5; i++) {
 			genreButton[i].addActionListener(this);
 			genreButton[i].setFont(myFont);
+			genreButton[i].setForeground(Color.green);
 			genreButton[i].setFocusable(false);
 			genreButton[i].setBackground(Color.BLUE);
+			genreButton[i].setBorderPainted(false);
 			genreButton[i].setOpaque(true);
 		}		
 		
@@ -77,13 +74,10 @@ public class Recomendation implements ActionListener{
 		
 		frame.add(label1);
 		frame.add(recomendedShowField);
-		frame.add(recomendedDescriptionField);
 		frame.add(panel);
 		frame.setVisible(true);	
-		
 	}
-	
-	
+		
 	public static void main(String[] args) {
 		Recomendation recomendation = new Recomendation();
 	}
@@ -99,14 +93,12 @@ public class Recomendation implements ActionListener{
 		} 
 		bufReader.close();
 		this.shows = shows;
-
 	}
 	
 	public String selectShow() {
 		int size = shows.size();
 		int int_random = rand.nextInt(size);
-		String recomendatedShow = shows.get(int_random);
-		
+		String recomendatedShow = shows.get(int_random);		
 		return recomendatedShow;
 	}
 	
@@ -130,13 +122,6 @@ public class Recomendation implements ActionListener{
 		return null;
 	}
 	
-	public String getDescription(String show) {
-		for (String s: shows) {
-			
-		}
-		return null;
-	}
-	
 	@Override
 	public void actionPerformed(ActionEvent e){
 		String recomendation;
@@ -144,7 +129,6 @@ public class Recomendation implements ActionListener{
 			try {
 				recomendation = getRecomendation("action");
 				recomendedShowField.setText(recomendation);
-				recomendedDescriptionField.setText(recomendation);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
