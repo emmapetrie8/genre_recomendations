@@ -4,9 +4,12 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.Random;
 
 import javax.swing.JButton;
@@ -24,6 +27,7 @@ public class Recomendation implements ActionListener{
 	JTextField recomendedShowField;
 	JButton[] genreButton = new JButton[5];
 	JButton actionButton, comedyButton, horrorButton, realityButton, romanceButton;
+	JButton getDescription;
 	JPanel panel;
 	Font myFont = new Font("SansSerif", Font.BOLD,10);
 	
@@ -72,13 +76,23 @@ public class Recomendation implements ActionListener{
 		panel.add(genreButton[3]);
 		panel.add(genreButton[4]);
 		
+		getDescription = new JButton("Get description");
+		getDescription.addActionListener(this);
+		getDescription.setSize(50,50);
+		getDescription.setBounds(50, 350, 100, 50);
+		getDescription.setFont(myFont);
+		getDescription.setBackground(Color.red);
+		getDescription.setOpaque(true);
+		
 		frame.add(label1);
 		frame.add(recomendedShowField);
 		frame.add(panel);
+		frame.add(getDescription);
 		frame.setVisible(true);	
 	}
 		
 	public static void main(String[] args) {
+//		HashMapFromTextFile("/Users/emmapetrie/eclipse-workspace/Genre JFrame/src/action.txt");
 		Recomendation recomendation = new Recomendation();
 	}
 	
@@ -94,6 +108,62 @@ public class Recomendation implements ActionListener{
 		bufReader.close();
 		this.shows = shows;
 	}
+//	
+//	public void read(String file) throws IOException{
+//		
+//	}
+//	
+//	public static void HashMapFromTextFile(String toRead){
+//  
+//        HashMap<String, String> shows = new HashMap<String, String>();
+//        BufferedReader br = null;
+//  
+//        try {
+//  
+//            // create file object
+//            File file = new File(toRead);
+//  
+//            // create BufferedReader object from the File
+//            br = new BufferedReader(new FileReader(file));
+//  
+//            String line = null;
+//  
+//            // read file line by line
+//            while ((line = br.readLine()) != null) {
+//  
+//                // split the line by :
+//                String[] parts = line.split(":");
+//  
+//                // first part is name, second is number
+//                String name = parts[0].trim();
+//                String number = parts[1].trim();
+//  
+//                // put name, number in HashMap if they are
+//                // not empty
+//                if (!name.equals("") && !number.equals(""))
+//                    shows.put(name, number);
+//            }
+//        }
+//        catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        finally {
+//  
+//            // Always close the BufferedReader
+//            if (br != null) {
+//                try {
+//                    br.close();
+//                }
+//                catch (Exception e) {
+//                };
+//            }
+//        }
+//        
+//        for (Entry<String, String> entry : shows.entrySet()) {
+//           System.out.println(entry.getKey() + " : " + entry.getValue());
+//       }
+//  
+//    }
 	
 	public String selectShow() {
 		int size = shows.size();
@@ -160,6 +230,8 @@ public class Recomendation implements ActionListener{
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
-		}	
+		}else if (e.getSource() == getDescription) {
+			getDescriptionWindow newWindow = new getDescriptionWindow();
+		}
 	}
 }
